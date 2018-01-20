@@ -1,7 +1,9 @@
 package com.ideotechs.photoeditorapp;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,33 +32,72 @@ public class MainActivity extends AppCompatActivity {
         cameraBtn = (ImageButton)findViewById(R.id.camera);
         //liveCameraBtn = (ImageButton)findViewById(R.id.livecamera);
         editorBtn = (ImageButton)findViewById(R.id.editor);
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
+        cameraBtn.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
-            public void onClick(View view) {
-                new CameraPreviewIntent(MainActivity.this)
-                        .setExportDir(CameraPreviewIntent.Directory.DCIM, "PhotoEditorApp")
-                        .setExportPrefix("PhotoEditorApp_")
-                        .setEditorIntent(
-                                new PhotoEditorIntent(MainActivity.this)
-                                        .setExportDir(PhotoEditorIntent.Directory.DCIM, "PhotoEditorApp")
-                                        .setExportPrefix("PhotoEditorApp_result_")
-                                        .destroySourceAfterSave(true)
-                        )
-                        .startActivityForResult(CAMERA_PREVIEW_RESULT);
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        ImageButton view = (ImageButton ) v;
+                        view.getBackground().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP:
+
+                        // Your action here on button click
+                        new CameraPreviewIntent(MainActivity.this)
+                            .setExportDir(CameraPreviewIntent.Directory.DCIM, "PhotoEditorApp")
+                            .setExportPrefix("PhotoEditorApp_")
+                            .setEditorIntent(
+                                    new PhotoEditorIntent(MainActivity.this)
+                                            .setExportDir(PhotoEditorIntent.Directory.DCIM, "PhotoEditorApp")
+                                            .setExportPrefix("PhotoEditorApp_result_")
+                                            .destroySourceAfterSave(true)
+                            )
+                            .startActivityForResult(CAMERA_PREVIEW_RESULT);
+
+                    case MotionEvent.ACTION_CANCEL: {
+                        ImageButton view = (ImageButton) v;
+                        view.getBackground().clearColorFilter();
+                        view.invalidate();
+                        break;
+                    }
+                }
+                return true;
             }
         });
-        editorBtn.setOnClickListener(new View.OnClickListener() {
+        editorBtn.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
-            public void onClick(View view) {
-                new ImagePicker.Builder(MainActivity.this)
-                        .mode(ImagePicker.Mode.GALLERY)
-                        .compressLevel(ImagePicker.ComperesLevel.MEDIUM)
-                        .directory(ImagePicker.Directory.DEFAULT)
-                        .extension(ImagePicker.Extension.PNG)
-                        .scale(600, 600)
-                        .allowMultipleImages(false)
-                        .enableDebuggingMode(true)
-                        .build();
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        ImageButton view = (ImageButton ) v;
+                        view.getBackground().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP:
+
+                        new ImagePicker.Builder(MainActivity.this)
+                                .mode(ImagePicker.Mode.GALLERY)
+                                .compressLevel(ImagePicker.ComperesLevel.MEDIUM)
+                                .directory(ImagePicker.Directory.DEFAULT)
+                                .extension(ImagePicker.Extension.PNG)
+                                .scale(600, 600)
+                                .allowMultipleImages(false)
+                                .enableDebuggingMode(true)
+                                .build();
+
+                    case MotionEvent.ACTION_CANCEL: {
+                        ImageButton view = (ImageButton) v;
+                        view.getBackground().clearColorFilter();
+                        view.invalidate();
+                        break;
+                    }
+                }
+                return true;
             }
         });
     }

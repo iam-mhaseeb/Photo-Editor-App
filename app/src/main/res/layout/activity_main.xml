@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="bottom"
+    android:paddingBottom="80dp"
     tools:context="com.ideotechs.photoeditorapp.MainActivity"
     android:background="@drawable/bg">
 
@@ -31,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:text="CAMERA"
                 android:layout_gravity="center"
-                android:textColor="@android:color/white"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
        <LinearLayout
            android:layout_width="wrap_content"
@@ -50,7 +52,8 @@
                android:layout_height="wrap_content"
                android:text="EDIT PHOTOS"
                android:layout_gravity="center"
-               android:textColor="@android:color/white"/>
+               android:textStyle="bold"
+               android:textColor="@android:color/black"/>
        </LinearLayout>
     </LinearLayout>
 
