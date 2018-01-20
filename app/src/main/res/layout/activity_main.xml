@@ -5,22 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ideotechs.photoeditorapp.MainActivity">
+    android:gravity="center"
+    tools:context="com.ideotechs.photoeditorapp.MainActivity"
+    android:background="@drawable/bg">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CAMERA"
-        android:id="@+id/camera"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EDITOR"
-        android:id="@+id/editor"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LIVE CAMERA"
-        android:id="@+id/livecamera"/>
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cameraicon"
+            android:scaleType="fitXY"
+            android:text="CAMERA"
+            android:layout_margin="20dp"
+            android:id="@+id/camera"/>
+        <ImageButton
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/photostudio"
+            android:scaleType="fitXY"
+            android:text="IMAGE EDITOR"
+            android:id="@+id/editor"/>
+    </LinearLayout>
+
 
 </LinearLayout>
