@@ -13,5 +13,5 @@ Check out demo of project [here](https://play.google.com/store/apps/details?id=c
 To use this App just download the repository & open it up in Android Stuido. The project is ready for your next use, So what are 
 you wating for? Start creating something awesome! Good Luck!
 
-## CREDITS
+## TERMS OF USE
 The app is open source and free for resuse, but you must credit the developer!
