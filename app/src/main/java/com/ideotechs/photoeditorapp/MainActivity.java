@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         //storage paths
-        path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/PhotoEditorApp";
+        path = Environment.getExternalStorageDirectory().getAbsolutePath() + getString(R.string.directory_name);
         dir = new File(path);
         if (!dir.exists()) {
             dir.mkdirs();
@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
                         // Your action here on button click
                         new CameraPreviewIntent(MainActivity.this)
                             .setExportDir(dir.getPath())
-                            .setExportPrefix("PhotoEditorApp_")
+                            .setExportPrefix(getString(R.string.photo_preview_prefix))
                             .setEditorIntent(
                                     new PhotoEditorIntent(MainActivity.this)
                                             .setExportDir(dir.getPath())
-                                            .setExportPrefix("PhotoEditorApp_result_")
+                                            .setExportPrefix(getString(R.string.photo_result_prefix))
                                             .destroySourceAfterSave(true)
                             )
                             .startActivityForResult(CAMERA_PREVIEW_RESULT);
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == CAMERA_PREVIEW_RESULT) {
             String path = data.getStringExtra(CameraPreviewActivity.RESULT_IMAGE_PATH);
             sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
-            Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.photo_saved_toast_string), Toast.LENGTH_LONG).show();
 
         }
         if (requestCode == ImagePicker.IMAGE_PICKER_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             new PhotoEditorIntent(MainActivity.this)
                 .setSourceImagePath(mPaths.get(0))
                 .setExportDir(dir.getPath())
-                .setExportPrefix("PhotoEditorApp_result_")
+                .setExportPrefix(getString(R.string.photo_result_prefix))
                 .destroySourceAfterSave(true)
                 .startActivityForResult(CAMERA_PREVIEW_RESULT);
         }

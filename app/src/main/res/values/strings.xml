@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Photo Editor App</string>
+    <string name="photo_result_prefix">PhotoEditorApp_result_</string>
+    <string name="photo_saved_toast_string">Photo Saved!</string>
+    <string name="photo_preview_prefix">PhotoEditorApp_</string>
+    <string name="directory_name">/PhotoEditorApp</string>
 </resources>
