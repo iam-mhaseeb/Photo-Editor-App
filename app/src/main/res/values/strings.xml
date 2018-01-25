@@ -4,4 +4,6 @@
     <string name="photo_saved_toast_string">Photo Saved!</string>
     <string name="photo_preview_prefix">PhotoEditorApp_</string>
     <string name="directory_name">/PhotoEditorApp</string>
+    <string name="permissions_message">All permissions are not given!\nApp may not work properly, Do you want to try again?</string>
+    <string name="toast_message">Sorry, Permissions not given!</string>
 </resources>
