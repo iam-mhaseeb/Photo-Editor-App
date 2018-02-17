@@ -26,10 +26,6 @@ Things reuired<br>
 Feel free to submit pull requests to me.
 
 
-## DEMO
-Check out demo of project [here](https://play.google.com/store/apps/details?id=com.ideotechs.photoeditorapp)
-
-
 ## Authors
 
 * **Muhammad Haseeb** - *Initial work* - [Muhammad Haseeb](https://github.com/iam-mhaseeb)
